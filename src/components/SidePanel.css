@@ -11,13 +11,13 @@
 
 /* Sidebar button styles */
 .sidebar-button {
-  background-color: #e0e0e0; /* Light gray background on hover */
+  background-color: #f5f5f5; /* Light gray background on hover */
   display: block;
   width: 89%; /* Make buttons span 80% of the sidebar width */
-  line-height: 45px; /* Match line height to button height */
+  line-height: 65px; /* Match line height to button height */
   padding: 10px 15px; /* Add padding for click area */
   text-align: left; /* Center-align the text */
-  font-size: 1.5rem; /* Match the font size of previous text */
+  font-size: 2rem; /* Match the font size of previous text */
   font-weight: normal; /* Bold text for buttons */
   color: #333; /* Text color */
   text-decoration: none; /* Remove underline from links */
@@ -25,7 +25,7 @@
   border-radius: 4px; /* Rounded corners for buttons */
   margin-bottom: 1px; /* Space between buttons */
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
-  height: 45px;
+  height: 65px;
 }
 
 /* Button hover effect */
@@ -40,6 +40,13 @@
   background-color: orange; /* Highlight active item in orange */
   color: white; /* White text for contrast */
   border: 1px solid orange; /* Border matches the background */
+}
+
+/* Icon styles */
+.button-icon {
+  margin-right: 10px; /* Add space between icon and text */
+  font-size: 2rem; /* Size of the icons */
+  color: #333; /* Default icon color */
 }
 
 
@@ -76,4 +83,5 @@
   color: #555;
   margin-top: -10px;
 }
+
 

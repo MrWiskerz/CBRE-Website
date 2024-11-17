@@ -2,17 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import './BubbleGroup.css';
 
 const BubbleGroup = () => {
-  const [bubbles, setBubbles] = useState([
-    {
-      description: 'Description',
-      paragraph:
-        'A random paragraph can also be an excellent way for a writer to tackle writers block...',
-      status: 'Status',
-      statusCode: 2,
-    },
-  ]);
+  const [jsonData, setJsonData] = useState([]); // Store data from JSON
+  const [bubbles, setBubbles] = useState([]); // Displayed bubbles
+  const [error, setError] = useState(null);
 
+  const statNames = ["Carbon Emission", "Rate of Pollution", "Energy Usage"];
   const bubbleContainerRef = useRef(null);
+  //const averageStatusCode = data.reduce((sum, item) => sum + item.statusCode, 0) / data.length;
 
   const lockScroll = () => {
     document.body.classList.add('no-scroll');
@@ -42,17 +38,24 @@ const BubbleGroup = () => {
     }
   }, []);
 
+  // Fetch JSON data on component mount
+  useEffect(() => {
+    fetch('/BubbleData.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch JSON data');
+        }
+        return response.json();
+      })
+      .then((data) => setJsonData(data))
+      .catch((err) => setError(err.message));
+  }, []);
+
   // Handler to add a new bubble
   const addBubble = () => {
-    setBubbles((prevBubbles) => [
-      ...prevBubbles,
-      {
-        description: 'New Bubble',
-        paragraph: 'This is a newly added bubble.',
-        status: 'New Status',
-        statusCode: Math.floor(Math.random() * 3), // Randomize status code (0, 1, 2)
-      },
-    ]);
+    if (bubbles.length < jsonData.length) {
+      setBubbles((prevBubbles) => [...prevBubbles, jsonData[prevBubbles.length]]);
+    }
   };
 
   // Handler to delete a bubble
@@ -60,81 +63,74 @@ const BubbleGroup = () => {
     setBubbles((prevBubbles) => prevBubbles.filter((_, i) => i !== index));
   };
 
-  // Scroll handler
-  const scrollBubbles = (direction) => {
-    if (bubbleContainerRef.current) {
-      const scrollAmount = 300; // Adjust for smoother scroll
-      bubbleContainerRef.current.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
+  const averageStatusCode =
+  jsonData.length > 0
+    ? (jsonData.reduce((sum, item) => sum + item.statusCode, 0) / jsonData.length).toFixed(2)
+    : "N/A";
+
 
   return (
+    <>
+    <h1 className = "customHeader1">------- Important Sites -------</h1>
+    <p className = "customP">Average Status Rating: {averageStatusCode}</p>
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Left Arrow */}
-      <button
-        className="arrow-btn arrow-left"
-        onClick={() => scrollBubbles(-1)}
-      >
-        <i className="fas fa-chevron-left"></i>
-      </button>
+      {error ? (
+        <p style={{ color: 'red' }}>Error: {error}</p>
+      ) : (
+        <>
+          {/* Bubble Container */}
+          <div className="bubble-container" ref={bubbleContainerRef}>
+            {bubbles.map((bubble, index) => (
+              <div key={index} className="bubble">
+                {/* Delete Button */}
+                <button
+                  className="delete-bubble-btn"
+                  onClick={() => deleteBubble(index)}
+                  title="Delete this bubble"
+                >
+                  &times;
+                </button>
 
-      {/* Right Arrow */}
-      <button
-        className="arrow-btn arrow-right"
-        onClick={() => scrollBubbles(1)}
-      >
-        <i className="fas fa-chevron-right"></i>
-      </button>
+                <span className="bubble-text">{bubble.title || 'Title'}</span>
+                <p className="bubble-paragraph">
+                  {bubble.desc}
+                </p>
 
-      {/* Bubble Container */}
-      <div className="bubble-container" ref={bubbleContainerRef}>
-        {bubbles.map((bubble, index) => (
-          <div key={index} className="bubble">
-            {/* Delete Button */}
-            <button
-              className="delete-bubble-btn"
-              onClick={() => deleteBubble(index)}
-              title="Delete this bubble"
-            >
-              &times;
-            </button>
+                {/* Status with colored circle */}
+                <div className="bubble-status">
+                  <span
+                    className="status-circle"
+                    style={{
+                      backgroundColor:
+                        bubble.statusCode === 0
+                          ? 'red'
+                          : bubble.statusCode === 1
+                          ? 'yellow'
+                          : 'green',
+                    }}
+                  ></span>
+                  Status Code: {bubble.statusCode}
+                </div>
 
-            <span className="bubble-text">{bubble.description}</span>
-            <p className="bubble-paragraph">{bubble.paragraph}</p>
-
-            {/* Status with colored circle */}
-            <div className="bubble-status">
-              <span
-                className="status-circle"
-                style={{
-                  backgroundColor:
-                    bubble.statusCode === 0
-                      ? 'red'
-                      : bubble.statusCode === 1
-                      ? 'yellow'
-                      : 'green',
-                }}
-              ></span>
-              {bubble.status}
-            </div>
-
-            <img
-              className="bubble-image"
-              src="https://costar.brightspotcdn.com/dims4/default/8c453af/2147483647/strip/true/crop/5042x3359+0+0/resize/2100x1399!/quality/100/?url=http%3A%2F%2Fcostar-brightspot.s3.us-east-1.amazonaws.com%2F94%2Fbf%2Fd8b5ecaa49609748a4b1add90d20%2Fprimaryphoto-47.jpg"
-              alt="bubble icon"
-            />
+                <img
+                  className="bubble-image"
+                  src={bubble.image || 'https://via.placeholder.com/300'}
+                  alt={`Bubble ${index + 1}`}
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Add Bubble Button */}
-      <button onClick={addBubble} className="add-bubble-btn">
-        <i className="fa-solid fa-plus"></i> {/* Font Awesome Plus Icon */}
-      </button>
+          {/* Add Bubble Button, hidden when limit is reached */}
+          {bubbles.length < jsonData.length && (
+            <button onClick={addBubble} className="add-bubble-btn">
+              <i className="fa-solid fa-plus"></i> {/* Font Awesome Plus Icon */}
+            </button>
+          )}
+        </>
+      )}
     </div>
+    </>
   );
 };
 

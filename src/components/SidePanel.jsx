@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import './SidePanel.css';
+import { FaHome, FaCalendarAlt, FaGlobe, FaRobot, FaComments } from 'react-icons/fa'; // Import icons
 
 const SidePanel = () => {
+  // Get the base URL of the site
+  const baseUrl = window.location.origin;
+
   useEffect(() => {
     const links = document.querySelectorAll('.sidebar-button');
     links.forEach((link) => {
@@ -16,23 +20,21 @@ const SidePanel = () => {
   return (
     <div className="sidebar">
       <h1 className="titleSideBar">
-        <span className="bold">Herbert Ronaldo Melgar</span>'s 360 Board
+        <span className="bold">First-Name Last-Name</span>'s 360 Board
       </h1>
       <div className="sidebar-buttons">
-        <a href="/dashboard.html" className="sidebar-button">
-          Dashboard
+        <a href={`${baseUrl}/dashboard.html`} className="sidebar-button">
+          <FaHome className="button-icon" /> Dashboard
         </a>
-        <a href="/calendar.html" className="sidebar-button">
-          Calendar
+        <a href={`${baseUrl}/calendar.html`} className="sidebar-button">
+          <FaCalendarAlt className="button-icon" /> Calendar
         </a>
-        <a href="/my-sites.html" className="sidebar-button">
-          My Sites
+        
+        <a href={`${baseUrl}`} className="sidebar-button">
+          <FaRobot className="button-icon" /> AI Manager
         </a>
-        <a href="/ai-site-manager.html" className="sidebar-button">
-          AI Site Manager
-        </a>
-        <a href="/chat360.html" className="sidebar-button">
-          Chat360
+        <a href={`${baseUrl}/chat360.html`} className="sidebar-button">
+          <FaComments className="button-icon" /> Chat360
         </a>
       </div>
     </div>

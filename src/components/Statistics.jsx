@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import StatisticElement from './StatisticElement';
+import AiResponse from '/src/AiResponse.jsx';
 import './Statistics.css';
 
 function Statistics() {
   const [jsonData, setJsonData] = useState([]);
   const [error, setError] = useState(null);
-
-  var currentName = "";
 
   useEffect(() => {
     fetch('/BubbleData.json')
@@ -20,9 +19,12 @@ function Statistics() {
       .catch((err) => setError(err.message));
   }, []);
 
-  return(
+  // Convert jsonData to a JSON string for the prompt
+  const jsonDataString = JSON.stringify(jsonData, null, 2);
+
+  return (
     <>
-      <h1 className="customHeader1">Statistics:{" "+currentName}</h1>
+      <h1 className="customHeader1">------- Statistics -------</h1>
       <div className="div">
         {error ? (
           <p style={{ color: 'red' }}>Error: {error}</p>
@@ -32,6 +34,9 @@ function Statistics() {
               <StatisticElement id={index} contents={contents} />
             </div>
           ))
+        )}
+        {jsonData.length > 0 && (
+          <AiResponse prompt={`Analyze the following data, Keep it very short and concise, and provide no text formatting:\n${jsonDataString}`} />
         )}
       </div>
     </>

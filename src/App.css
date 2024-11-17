@@ -1,0 +1,35 @@
+/* Overview Section Styles */
+.customHeader1 {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2c3e50; /* Professional dark blue color */
+    text-align: center; /* Center the title */
+}
+
+.overview-content p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #555555; /* Medium gray for readability */
+    margin-bottom: 20px;
+}
+
+.overview-content p strong {
+    color: #2c3e50; /* Highlighted text for emphasis */
+}
+
+.overview-content {
+    padding: 10px 20px;
+}
+
+/* Page Container Styles */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    max-width: 800px; /* Restrict page width */
+    margin: 0 auto; /* Center page horizontally */
+    padding: 20px; /* Add padding around content */
+    min-height: 100vh; /* Ensure the container takes full viewport height */
+}

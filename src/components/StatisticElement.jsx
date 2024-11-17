@@ -1,17 +1,28 @@
 import React from 'react';
 import './Statistics.css';
+import { BiRotateLeft } from 'react-icons/bi';
 
 function StatisticElement({ id, contents }) {
 
-  const statValues = ["stat0", "stat1", "stat2"];
+  const statNames = ["Carbon Emission", "Rate of Pollution", "Energy Usage"];
 
   return (
     <>
       <h2 className="h1">
         <b>{contents.title}</b>
       </h2>
-      {contents.stats.map((value, index) => (<p>{statValues[index] +": "+value}</p>))}
-      <p>Status Code: {contents.statusCode}</p>
+      {contents.stats.map((value, index) => (<p>{statNames[index] +": "+value}</p>))}
+      <p>STATUS:</p>
+      <div className="status-circle2"
+        style={{
+          backgroundColor:
+            contents.statusCode === 0
+              ? 'red'
+              : contents.statusCode === 1
+              ? 'yellow'
+              : 'green',
+                }}
+      ></div>
     </>
   );
 }

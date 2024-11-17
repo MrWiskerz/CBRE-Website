@@ -22,9 +22,9 @@ html, body {
   padding: 12px 16px; /* Reduced padding for a smaller bubble */
   border-radius: 20px; /* Rounded corners */
   font-size: 14px; /* Smaller font size for compactness */
-  max-width: 80%; 
+  max-width: 30%; 
   min-width: 450px; /* Minimum width for the bubble */
-  height: 250px; /* Fixed height for the bubble */
+  height: 300px; /* Fixed height for the bubble */
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
   display: flex;
@@ -80,7 +80,7 @@ html, body {
 
 
 .bubble-paragraph {
-  font-size: 13px;
+  font-size: 16px;
   color: #555555;
   line-height: 1.4;
   width: 95%;
@@ -115,21 +115,22 @@ html, body {
 .status-circle {
   width: 12px;
   height: 12px;
-  background-color: #4caf50;
-  border-radius: 50%;
+  background-color: #4caf50; /* Default color */
+  border-radius: 50%; /* Makes it a perfect circle */
+  display: inline-block; /* Ensures the element respects width and height */
+  flex-shrink: 0; 
 }
-
 .bubble-image {
   position: absolute;
   right: 0px;
-  bottom: 0px; /* Position the image at the bottom-right */
-  width: 40%; /* Adjust width as needed */
-  height: 270px; /* Adjust height to match the width */
+  bottom: 0px; 
+  width: 50%; 
+  height: 320px; 
   object-fit: cover;
-  border-radius: 10px; /* Optional: rounded corners */
+  border-radius: 10px; 
   border: 0px solid rgb(46, 46, 46);
-  transform: rotate(0deg); /* Rotate to make it look like a triangle */
-  clip-path: polygon(0 100%, 100% 0, 100% 100%); /* Clip to a triangle shape */
+  transform: rotate(0deg); 
+  clip-path: polygon(0 100%, 100% 0, 100% 100%); 
   transform: rotate(0deg);
 }
 
@@ -146,7 +147,10 @@ html, body {
   font-size: 18px;
   transition: background-color 0.3s ease;
 }
-
 .add-bubble-btn:hover {
   background-color: #45a049;
-}
+}  
+
+
+
+

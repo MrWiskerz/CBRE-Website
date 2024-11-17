@@ -1,13 +1,38 @@
 [
     {
-      "title": "Initial Bubble",
+      "title": "Greenview Corporate Tower:",
+      "desc": "Equipped with a vertical garden facade and solar panels, this building reduces urban heat and generates 20% of its electricity from renewable sources.",
       "stats": [100, 200, 300],
-      "statusCode": 1
+      "statusCode": 1,
+      "image": "/src/assets/building0.png"
     },
     {
-      "title": "Second Bubble",
+      "title": "EcoLife Apartments: ",
+      "desc": "Features smart energy meters, rainwater harvesting systems, and triple-pane windows, cutting energy usage by 30% compared to standard buildings.",
       "stats": [402,106,402],
-      "statusCode": 2
+      "statusCode": 2,
+      "image": "/src/assets/building1.png"
+    },
+    {
+      "title": "Blue Horizon Shopping Center:",
+      "desc": "Utilizes geothermal heating and cooling, LED lighting, and a waste composting system, achieving net-zero carbon emissions annually.",
+      "stats": [103,296,983],
+      "statusCode": 1,
+      "image": "/src/assets/building2.png"
+    },
+    {
+      "title": "Sustainable Edge Campus:",
+      "desc": "Powered entirely by wind turbines and solar arrays, this campus incorporates water recycling systems and green roofs to support local biodiversity.",
+      "stats": [96,784,504],
+      "statusCode": 2,
+      "image": "src/assets/building3.png"
+    },
+    {
+      "title": "Oceanview Hotel: ",
+      "desc": "Implements seawater cooling, motion-sensor lights, and plastic-free operations, reducing its carbon footprint by 40% while enhancing guest experience.",
+      "stats": [476,507,201],
+      "statusCode": 0,
+      "image": "src/assets/building4.png"
     }
   ]
   

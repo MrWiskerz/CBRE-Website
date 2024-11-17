@@ -47,7 +47,7 @@
   /* Calendar Styling */
   .react-calendar {
     min-width: 2260px;
-    min-height: 500px;
+    min-height: 8px;
     margin: 20px auto;
     border: 1px solid #ddd;
     border-radius: 8px;
