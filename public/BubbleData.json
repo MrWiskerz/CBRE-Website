@@ -1,0 +1,13 @@
+[
+    {
+      "title": "Initial Bubble",
+      "stats": [100, 200, 300],
+      "statusCode": 1
+    },
+    {
+      "title": "Second Bubble",
+      "stats": [402,106,402],
+      "statusCode": 2
+    }
+  ]
+  

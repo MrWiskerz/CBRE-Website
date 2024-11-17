@@ -1,0 +1,16 @@
+.div{
+    border: 1px solid;
+    color: black;
+    padding: 0;
+    width: 50%;
+    height: 1000px;
+    min-height: 0;
+    text-align: center;
+    margin-left: 15%;
+    border-radius: 5%;
+}
+
+.h1{
+    text-align: center;
+    margin-right: 20%;
+}

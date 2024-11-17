@@ -1,0 +1,152 @@
+html, body {
+  overflow-x: hidden; 
+  margin: 0;
+  padding: 0;
+}
+
+.bubble-container {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin: 50px auto 20px auto;
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  margin-left: 16%;
+}
+
+.bubble {
+  background-color: #f9f9f9; /* Light background color */
+  color: #333333; /* Dark text for contrast */
+  padding: 12px 16px; /* Reduced padding for a smaller bubble */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 14px; /* Smaller font size for compactness */
+  max-width: 80%; 
+  min-width: 450px; /* Minimum width for the bubble */
+  height: 250px; /* Fixed height for the bubble */
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column; /* Stack text and paragraph vertically */
+  justify-content: flex-start; /* Align the content to the top */
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Delete button styling */
+.delete-bubble-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #888888; /* Red background for delete button */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10; /* Ensure the button is always on top */
+}
+
+.delete-bubble-btn:hover {
+  background-color: #5c1818; /* Slightly lighter red on hover */
+}
+
+.bubble-text {
+  margin-bottom: 12px; /* Slightly more space below for better separation */
+  font-size: 20px; /* Increased font size for prominence */
+  font-weight: 800; /* Stronger emphasis with a bolder weight */
+  color: #2c3e50; /* Deep dark gray-blue for better contrast and readability */
+  letter-spacing: 1px; /* Slight letter spacing for a cleaner look */
+  text-transform: uppercase; /* Uppercase for a modern feel */
+  line-height: 1.4; /* Improved line spacing for clarity */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow to create depth */
+  font-family: 'Nunito', sans-serif; /* Clean, modern font */
+}
+
+
+.bubble-paragraph {
+  font-size: 13px;
+  color: #555555;
+  line-height: 1.4;
+  width: 95%;
+  max-width: 80%; 
+  flex-grow: 1; /* Allow the paragraph to take up available space */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; /* Ensure text wraps onto a new line */
+  text-align: left;
+  margin-left: 10px; /* Move the paragraph to the left */
+  margin-right: 20px; /* Ensure some space between the text and the image */
+  margin-bottom: 10px; /* Remove bottom margin to make space for upward movement */
+  padding-top: -20px; /* Adds some space at the top to move text upwards */
+}
+
+.bubble-status {
+  font-size: 16px;
+  color: #444444;
+  margin-top: 8px;
+  font-weight: 600;
+  text-align: left;
+  position: absolute;
+  bottom: 10px;
+  right: 55%; 
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.status-circle {
+  width: 12px;
+  height: 12px;
+  background-color: #4caf50;
+  border-radius: 50%;
+}
+
+.bubble-image {
+  position: absolute;
+  right: 0px;
+  bottom: 0px; /* Position the image at the bottom-right */
+  width: 40%; /* Adjust width as needed */
+  height: 270px; /* Adjust height to match the width */
+  object-fit: cover;
+  border-radius: 10px; /* Optional: rounded corners */
+  border: 0px solid rgb(46, 46, 46);
+  transform: rotate(0deg); /* Rotate to make it look like a triangle */
+  clip-path: polygon(0 100%, 100% 0, 100% 100%); /* Clip to a triangle shape */
+  transform: rotate(0deg);
+}
+
+.add-bubble-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #9b9b9b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.add-bubble-btn:hover {
+  background-color: #45a049;
+}

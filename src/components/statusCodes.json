@@ -1,0 +1,22 @@
+{
+  "statusCodes": {
+    "0": {
+      "color": "red",
+      "description": "Error"
+    },
+    "1": {
+      "color": "yellow",
+      "description": "Warning"
+    },
+    "2": {
+      "color": "green",
+      "description": "Success"
+    }
+  },
+  "paragraphs": [
+    "This is the first paragraph. It will be displayed in the first bubble.",
+    "Here is the second paragraph. Each bubble gets a new one as you add.",
+    "This is the third paragraph. When the bubbles run out of paragraphs, they loop back.",
+    "The fourth paragraph is also here. Keep adding more bubbles and the text will change."
+  ]
+}
